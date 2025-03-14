@@ -1,0 +1,44 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="container mt-4">
+    <!-- Banner -->
+    <div class="banner mb-4">
+        <img src="https://truonggiang.vn/wp-content/uploads/2022/09/banner-laptop-sinh-vien-2048x943-1.jpg" class="img-fluid rounded" alt="Banner">
+    </div>
+
+    <div class="row">
+        <!-- Sidebar -->
+        <aside class="col-md-3">
+            <h4 class="mb-3">Danh mục sản phẩm</h4>
+            <ul class="list-group">
+                <li class="list-group-item"><a href="#">Laptop</a></li>
+                <li class="list-group-item"><a href="#">Điện thoại</a></li>
+                <li class="list-group-item"><a href="#">Máy ảnh</a></li>
+                <li class="list-group-item"><a href="#">Phụ kiện</a></li>
+            </ul>
+        </aside>
+
+        <!-- Danh sách sản phẩm -->
+        <section class="col-md-9">
+            <h3 class="mb-3">Sản phẩm mới</h3>
+            <div class="row">
+                @foreach (var product in Model)
+                {
+                    <div class="col-md-4 mb-4">
+                        <div class="card h-100 shadow-sm">
+                            <img src="@product.ImageUrl" class="card-img-top" alt="@product.Name">
+                            <div class="card-body">
+                                <h5 class="card-title">@product.Name</h5>
+                                <p class="card-text">@product.Price VNĐ</p>
+                                <a asp-action="Details" asp-route-id="@product.Id" class="btn btn-primary">Xem chi tiết</a>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </section>
+    </div>
+</div>
+
